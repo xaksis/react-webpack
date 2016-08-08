@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var BUILD_DIR = path.resolve(__dirname, 'src/client/public');
 var APP_DIR = path.resolve(__dirname, 'src/client/app');
@@ -9,6 +10,10 @@ var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
   template: APP_DIR + '/index.html',
   filename: 'index.html',
   inject: 'body'
+});
+
+var ExtractStylesConfig = new ExtractTextPlugin('style.css', {
+	allChunks: true
 });
 
 
@@ -28,12 +33,13 @@ var config = {
       },
       {
       	test: /\.scss$/,
-      	loaders: ['style', 'css', 'sass']
+      	loader: ExtractTextPlugin.extract('css!sass')
+      	//loaders: ['style', 'css', 'sass']
       }
     ]
   }, 
   //plugins
-  plugins: [HTMLWebpackPluginConfig]
+  plugins: [HTMLWebpackPluginConfig, ExtractStylesConfig]
 };
 
 module.exports = config;
