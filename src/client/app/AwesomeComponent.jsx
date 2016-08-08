@@ -1,7 +1,6 @@
 import React from 'react';
 
 class AwesomeComponent extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {likesCount : 0};
@@ -14,9 +13,16 @@ class AwesomeComponent extends React.Component {
   }
 
   render() {
+
+    var likeStyle = {
+      backgroundColor: "red",
+      display: "inline-block",
+      padding: 10
+    };
+
     return (
       <div>
-        Likes : <span>{this.state.likesCount}</span>
+        Likes : <span style={likeStyle}>{this.state.likesCount}</span>
         <div><button onClick={this.onLike}>Like Me</button></div>
       </div>
     );
