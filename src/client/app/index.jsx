@@ -3,7 +3,9 @@ import {render} from 'react-dom';
 import { Router, Route, Link } from 'react-router'
 
 import AwesomeComponent from './AwesomeComponent.jsx';
-import MyComponent from './MyComponent/MyComponent.jsx'
+import MyComponent from './MyComponent/MyComponent.jsx';
+import testJson from './temp/test.json';
+import image from './images/image.png';
 
 
 class MainLayout extends React.Component {
@@ -13,6 +15,8 @@ class MainLayout extends React.Component {
     		<p> Hello Tutorial!</p>
     		<AwesomeComponent />
     		<MyComponent />
+    		{testJson}
+    		<img src={image} />
     	</div>
     )
   }
